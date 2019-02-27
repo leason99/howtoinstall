@@ -1,0 +1,14 @@
+
+
+
+#Error when using pyinstaller: UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff
+
+I found an answer on another forum. I change the line number 369 in the Python\Lib\site-packages\Pyinstaller\compat.py file:
+
+out = out.decode(encoding)
+to
+
+out = out.decode(encoding, errors='ignore')
+or
+
+out = out.decode(encoding, "replace")
